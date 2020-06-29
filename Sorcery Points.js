@@ -1,4 +1,5 @@
 /*sorcerer point macro
+ *Originally by Kekilla, expanded by Lazytron
  *Module Requirements : Furnace
  *Character Requirements : 	Must be a user with levels in "Sorcerer".
  *				Must have a feature with uses equal to sorcerer level named "Sorcery Points"
@@ -28,11 +29,12 @@ function Sorcerer_Dialog()
 			<br>
 			<label>Select Action  : </label>
 			<select id="use" name="use">`;
+//add spell <> slot menu options	
 	if(checkSlots("available") && s_points.data.uses.value !== s_points.data.uses.max) {content += `<option value = "sorcPoint">Spell Slot => Sorcery Point</option>`;}
 	if(checkSlots("missing") && s_points.data.uses.value >= 2){content += `<option value = "spellSlot">Sorcery Point => Spell Slot</option>`;}
 	if(checkPoints() > 0 && checkSlots("available"))
 	{
-
+//add Metamagic menu options
 		if(game.user.character.data.items.find(i=>i.name==="Metamagic: Careful Spell")!==undefined)
                       {content += `<option value = "careful">Careful Spell Spell</option>`;}
                 if(game.user.character.data.items.find(i=>i.name==="Metamagic: Distant Spell")!==undefined)
